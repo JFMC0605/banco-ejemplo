@@ -4,62 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Banco Ejemplo</title>
-  <link rel="stylesheet" href="estilos.css"/>
+  <link rel="stylesheet" href="estilos.css" />
 </head>
 <body>
   <header class="topbar">
     <div class="container">
       <div class="contact-info">
-        <span>+ (502) 1234 5678</span> | 
+        <span>+ (502) 1234 5678</span> |
         <span><a href="mailto:info@bancoejemplo.com">info@bancoejemplo.com</a></span>
       </div>
     </div>
   </header>
-
-  <nav class="navbar">
-    <div class="container">
-      <div class="logo">BancoEjemplo</div>
-      <ul class="nav-links">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#vision">Visión</a></li>
-        <li><a href="#mision">Misión</a></li>
-        <li><a href="#objetivos">Objetivos</a></li>
-        <li><a href="#registro">Registro</a></li>
-      </ul>
-    </div>
-  </nav>
 
   <section class="hero">
     <div class="hero-overlay">
       <div class="hero-content">
         <h1>#1 Banco Digital de Confianza</h1>
         <p>Brindando soluciones financieras desde hace más de 25 años.</p>
-        <a href="#registro" class="btn">Únete Ahora</a>
+        <!-- Botón eliminado -->
       </div>
     </div>
   </section>
 
   <section class="features">
-    <div class="container">
-      <div class="card vision" id="vision">
+    <div class="horizontal-features">
+      <div class="card vision">
+        <div class="icono">🔍</div>
         <h2>Visión</h2>
         <p>Ser el banco más confiable e innovador que mejora la vida financiera de nuestros clientes.</p>
       </div>
-      <div class="card mision" id="mision">
+      <div class="card mision">
+        <div class="icono">💡</div>
         <h2>Misión</h2>
         <p>Brindar servicios financieros de calidad con tecnología avanzada, accesible para todos.</p>
       </div>
-      <div class="card objetivos" id="objetivos">
+      <div class="card objetivos">
+        <div class="icono">🎯</div>
         <h2>Objetivos</h2>
-        <p>1. Facilitar el acceso a productos financieros digitales.</p>
-        <p>2. Promover la educación financiera.</p>
-        <p>3. Mantener un excelente servicio al cliente.</p>
+        <p>1. Facilitar el acceso a productos financieros digitales.<br>
+           2. Promover la educación financiera.<br>
+           3. Mantener un excelente servicio al cliente.
+        </p>
       </div>
+    </div>
 
-      <!-- Botón "Registrar" -->
-      <div style="text-align: center; margin-top: 30px;">
-        <button id="btnMostrarRegistro" class="btn">Registrar</button>
-      </div>
+    <div class="registro-boton">
+      <button id="btnMostrarRegistro" class="btn">Registrar</button>
     </div>
   </section>
 
@@ -72,9 +62,6 @@
 
         <label for="fecha">Fecha de nacimiento</label>
         <input type="date" id="fecha" required />
-
-        <label for="numero">Tu número de usuario</label>
-        <input type="text" id="numero" placeholder="Tu número de usuario" readonly />
 
         <button type="submit">Registrarse</button>
       </form>
@@ -92,22 +79,16 @@
 
     function registrarUsuario(event) {
       event.preventDefault();
-      const numero = document.getElementById('numero').value;
-      alert("Usuario registrado con número: " + numero);
+      const numero = generarNumero();
+      alert("Usuario registrado exitosamente. Tu número de usuario es: " + numero);
+      document.querySelector('form').reset();
     }
 
-    // Mostrar formulario con transición al hacer clic
     function mostrarFormulario() {
       const registro = document.getElementById('registro');
-      document.getElementById('numero').value = generarNumero();
       registro.classList.remove('oculto');
       registro.scrollIntoView({ behavior: 'smooth' });
     }
-
-    document.querySelector('.btn[href="#registro"]').addEventListener('click', function (e) {
-      e.preventDefault();
-      mostrarFormulario();
-    });
 
     document.getElementById('btnMostrarRegistro').addEventListener('click', function () {
       mostrarFormulario();
